@@ -1,0 +1,41 @@
+<div [@routerTransition] class="login-page">
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <!-- <img class="logoImg" src="{{ logoImg }}" /> -->
+      <h1>Libreria</h1>
+      <form [formGroup]="loginForm" role="form" (ngSubmit)="onSubmit(loginForm.value)">
+        <div class="form-content">
+          <div class="form-group">
+            <input formControlName="name" [placeholder]="'Username' | translate"
+              class="form-control input-underline input-lg" type="text" />
+            <span class="text-danger"
+              *ngIf="(loginFormControl.name.touched || submitted) && loginFormControl.name.errors?.required">
+              {{ 'Username is Required' | translate }}
+            </span>
+          </div>
+
+          <div class="form-group">
+            <input formControlName="password" [placeholder]="'Password' | translate"
+              class="form-control input-underline input-lg" type="password" />
+            <span class="text-danger"
+              *ngIf="(loginFormControl.password.touched || submitted) && loginFormControl.password.errors?.required">
+              {{ 'Password is Required' | translate }}
+            </span>
+          </div>
+          <span class="text-danger" *ngIf="invalidUser">
+            {{ 'Invalid User' | translate }}
+          </span>
+        </div>
+
+        <button class="btn rounded-btn" type="submit">
+          {{'Log in' | translate }}
+        </button>
+        <!-- <a (click)="onLoggedin()" [routerLink]="['/dashboard']" class="btn rounded-btn">{{
+                    'Log in' | translate
+                }}</a> -->
+        &nbsp;
+        <!-- <a [routerLink]="['/signup']" class="btn rounded-btn">{{ 'Register' | translate }}</a> -->
+      </form>
+    </div>
+  </div>
+</div>

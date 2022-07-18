@@ -1,0 +1,9 @@
+<router-outlet></router-outlet>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+<!-- <div *ngIf="alertService.isVisible">
+  <alert-box [type]="alertService.typeAlert" (isVisible)="alertService.isVisible = $event" [visible]="true"
+    [notifyMessage]="alertService.messageAuth" [title]="alertService.titleAlert">
+  </alert-box>
+</div> -->
+
+<app-loader id="loader_dashboard" [show]="loader"></app-loader>

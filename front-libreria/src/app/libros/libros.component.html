@@ -1,0 +1,99 @@
+<div [@routerTransition] class="container-all">
+
+  <nav class="search-tool-header">
+    <div class="col-lg-4 title-container">
+      <h5>{{title}}</h5>
+    </div>
+
+    <!-- <div class="col-lg-4 search-container">
+      <div class="input-group">
+        <input type="text" class="form-control input-search" placeholder="Search..." aria-label="Search..."
+          aria-describedby="searchButton">
+        <button class="btn" type="button" id="searchButton"><i class="fa fa-search"></i></button>
+      </div>
+    </div> -->
+
+    <div class="container-icons">
+      <button class="btn-icon" id="agregar" (click)="agregarLibro()">
+        <i class="fa fa-plus-circle options-icon"></i>
+      </button>
+      <dx-tooltip target="#agregar" showEvent="dxhoverstart" hideEvent="dxhoverend">
+        <div *dxTemplate="let data of 'content'">
+          <div>Add</div>
+        </div>
+      </dx-tooltip>
+
+      <button class="btn-icon" id="eliminar" (click)="eliminarLibro()">
+        <i class="fa fa-trash-o options-icon"></i>
+      </button>
+      <dx-tooltip target="#eliminar" showEvent="dxhoverstart" hideEvent="dxhoverend">
+        <div *dxTemplate="let data of 'content'">
+          <div>Delete</div>
+        </div>
+      </dx-tooltip>
+
+      <button class="btn-icon" id="editar" (click)="editarLibro()">
+        <i class="fa fa-pencil options-icon"></i>
+      </button>
+      <dx-tooltip target="#editar" showEvent="dxhoverstart" hideEvent="dxhoverend">
+        <div *dxTemplate="let data of 'content'">
+          <div>Edit</div>
+        </div>
+      </dx-tooltip>
+
+      <button class="btn-icon" id="exportar" (click)="exportToExcel()">
+        <i class="fa fa-file-excel-o options-icon"></i>
+      </button>
+      <dx-tooltip target="#exportar" showEvent="dxhoverstart" hideEvent="dxhoverend">
+        <div *dxTemplate="let data of 'content'">
+          <div>Export</div>
+        </div>
+      </dx-tooltip>
+
+      <!-- <button class="btn-icon" id="calendar">
+        <i class="fa fa-calendar options-icon"></i>
+      </button>
+      <dx-tooltip target="#calendar" showEvent="dxhoverstart" hideEvent="dxhoverend">
+        <div *dxTemplate="let data of 'content'">
+          <div>Calendar</div>
+        </div>
+      </dx-tooltip> -->
+    </div>
+  </nav>
+
+  <div class="card-container">
+    <div class="row">
+      <div class="col-lg-12 table-container">
+        <dx-data-grid #dataGrid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="true"
+          (onExporting)="onExporting($event)" (onRowDblClick)="onRowDblClick($event)">
+          <dxi-column dataField="id" caption="Id" width="10%" alignment="right">
+          </dxi-column>
+          <dxi-column dataField="nombre" caption="Nombre" width="25%"></dxi-column>
+          <dxi-column dataField="temaNombre" caption="Tema" width="10%"></dxi-column>
+          <dxi-column dataField="autorNombre" caption="Autor" width="20%"></dxi-column>
+          <dxi-column dataField="editorialNombre" caption="Editorial" width="10%"></dxi-column>
+          <dxi-column dataField="precio" caption="Precio" dataType="number" format="currency" alignment="right"
+            width="15%"></dxi-column>
+          <dxi-column dataField="stockActual" caption="Stock Actual" width="10%"></dxi-column>
+        </dx-data-grid>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #confirmationModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Libreria</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p>Esta seguro que desea eliminar el libro seleccionado?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn primaryBtn" (click)="modal.close('Save click')">{{'Confirm' |
+      translate}}</button>
+    <button type="button" class="btn secondaryBtn" (click)="modal.dismiss('Cancel click')">{{'Cancel' |
+      translate}}</button>
+  </div>
+</ng-template>

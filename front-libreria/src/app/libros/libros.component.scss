@@ -1,0 +1,15 @@
+@import "../../styles/utils";
+
+::ng-deep #gridContainer {
+  max-height: 600px;
+  width: 100%;
+}
+
+.labelTemplate{
+  height: 15px;
+}
+
+.table-container{
+    top: 1vh;
+    position: relative;
+}

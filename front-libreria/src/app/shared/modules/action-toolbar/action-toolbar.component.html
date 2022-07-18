@@ -1,0 +1,12 @@
+<div class="toolbar-container">
+  <nav class="detail-tool-header">
+    <div *ngIf="showBackButton" class="back-arrow" [routerLink]="[backRouterLink]" [queryParams]="queryParams">
+      <i class="fa fa-arrow-left"></i>
+    </div>
+    <div class="title-container">
+      <h5>{{title}} {{titleAddon}}</h5>
+    </div>
+    <ng-content></ng-content>
+    <ng-content select="[buttons]"></ng-content>
+  </nav>
+</div>

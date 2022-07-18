@@ -1,0 +1,122 @@
+<div [@routerTransition] class="container-all">
+
+  <app-action-toolbar [title]="title" [titleAddon]="detalleLibro?.id.toString()"
+    [backRouterLink]="'/libros'">
+    <!-- <span class="header-info-bubble"> {{stockItemDetail?.status}} </span> -->
+    <div buttons class="buttons-container">
+      <div class="accept-button">
+        <button class="btn btn-accept" (click)="guardarLibro()">Guardar</button>
+      </div>
+    </div>
+  </app-action-toolbar>
+
+  <form role="form" [formGroup]="detalleLibroForm">
+    <div class="card-container">
+      <div class="row mb-2">
+        <div class="col-lg-4">
+          <div>
+            <label class="form-control-label">Nombre</label>
+            <dx-text-box formControlName="nombre" [isValid]="!shouldShowErrors([controls.nombre])"
+              [validationError]="{ message: 'El nombre del libro es requerido'}">
+            </dx-text-box>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <fieldset>
+            <label class="form-control-label">Autor</label>
+            <dx-select-box formControlName="autorId" [searchEnabled]="true" [dataSource]="autores" displayExpr="nombre"
+              valueExpr="id" searchMode="contains" [showDataBeforeSearch]="true" placeholder="Seleccione un autor..."
+              fieldTemplate="field" [showClearButton]="true">
+              <div *dxTemplate="let data of 'field'">
+                <dx-text-box [readOnly]="true" [value]="data && (data?.nombre + ' ' + data?.apellido)">
+                </dx-text-box>
+              </div>
+              <div *dxTemplate="let data of 'item'">
+                <span>{{ data?.nombre + ' ' + data?.apellido}}</span>
+              </div>
+            </dx-select-box>
+
+          </fieldset>
+        </div>
+        <div class="col-lg-3">
+          <fieldset>
+            <label class="form-control-label">Editorial</label>
+            <dx-select-box formControlName="editorialId" [searchEnabled]="true" [dataSource]="editoriales"
+              displayExpr="nombre" valueExpr="id" searchMode="contains" [showDataBeforeSearch]="true"
+              placeholder="Seleccione una editorial..." [showClearButton]="true">
+            </dx-select-box>
+          </fieldset>
+        </div>
+        <div class="col-lg-2">
+          <fieldset>
+            <label class="form-control-label">Tema</label>
+            <dx-select-box formControlName="temaId" [searchEnabled]="true" [dataSource]="temas"
+              displayExpr="nombre" valueExpr="id" searchMode="contains" [showDataBeforeSearch]="true"
+              placeholder="Seleccione un tema..." [showClearButton]="true">
+            </dx-select-box>
+          </fieldset>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-lg-4">
+          <fieldset>
+            <label class="form-control-label">Material</label>
+            <dx-select-box formControlName="materialId" [searchEnabled]="true" [dataSource]="materiales"
+            displayExpr="nombre" valueExpr="id" searchMode="contains" [showDataBeforeSearch]="true"
+            placeholder="Seleccione un material..." [showClearButton]="true">
+          </dx-select-box>
+          </fieldset>
+        </div>
+        <div class="col-lg-3">
+          <fieldset>
+            <label class="form-control-label">Edad</label>
+            <dx-text-box formControlName="edad">
+            </dx-text-box>
+          </fieldset>
+        </div>
+        <div class="col-lg-2">
+          <fieldset>
+            <label class="form-control-label">Precio</label>
+            <dx-text-box formControlName="precio">
+            </dx-text-box>
+          </fieldset>
+        </div>
+        <div class="col-lg-2">
+          <fieldset>
+            <label class="form-control-label">Stock Actual</label>
+            <dx-text-box formControlName="stockActual">
+            </dx-text-box>
+          </fieldset>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <fieldset>
+            <label class="form-control-label">Descripcion</label>
+            <dx-text-area formControlName="descripcion">
+            </dx-text-area>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <collapsible-card title="Imagenes" [collapsed]="false">
+      <div class="row mt-3">
+        <div class="col-lg-12">
+          <dx-data-grid id="gridContainer" [dataSource]="[]">
+            <dxo-pager [visible]="false">
+            </dxo-pager>
+            <dxi-column dataField="code" caption="Codigo" width="20%"></dxi-column>
+            <dxi-column dataField="fileName" caption="Archivo" width="50%"></dxi-column>
+            <dxi-column dataField="name" caption="Nombre" width="20%"></dxi-column>
+            <dxi-column dataField="content" caption="Contenido" width="10%" [allowFiltering]="false"
+              [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
+            <div *dxTemplate="let rowData of 'cellTemplate'">
+              <a (click)="downloadFile(rowData.data)" href="javascript:void(0)">Download</a>
+              <!-- <button type="button" class="btn btn-secondary" (click)="downloadFile(rowData.data)">Download</button> -->
+            </div>
+          </dx-data-grid>
+        </div>
+      </div>
+    </collapsible-card>
+  </form>
+</div>

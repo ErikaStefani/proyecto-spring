@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="https://www.spectec.net/" target="blank">Libreria Stefani</a>
+    <button (click)="toggleSidebar()" class="navbar-toggler" type="button">
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <i aria-hidden="true" class="fa fa-bars text-muted"></i>
+    </button>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a
+                    (click)="rltAndLtr()"
+                    class="nav-link mt-1"
+                    href="javascript:void(0)"
+                    style="padding: 0.375rem 1rem !important; border-color: #999;"
+                >
+                    RTL/LTR
+                </a>
+            </li>
+            &nbsp;
+            <!-- <li class="nav-item" ngbDropdown>
+                <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDepartment" role="button">
+                    {{currentDept.deptName}} <b class="caret"></b><span class="sr-only">(current)</span>
+                </a>
+                <div ngbDropdownMenu aria-labelledby="navbarDepartment" class="dropdown-menu dropdown-menu-end messages">
+                  <ng-container *ngFor="let site of accesibleSites">
+                    <h5 class="msg-header">{{site.key}}</h5>
+                    <div class="media">
+                      <ng-container *ngFor="let dept of site.values">
+                        <a (click)="changeDepartment(dept)" class="mt-0 mb-1" ngbDropdownItem href="javascript:void(0)">
+                          {{dept.deptName}}
+                        </a>
+                      </ng-container>
+                    </div>
+                  </ng-container>
+                </div>
+            </li> -->
+            <li class="nav-item" ngbDropdown>
+                <a class="nav-link" tabindex="0" ngbDropdownToggle id="languageDropdown" role="button">
+                    <i class="fa fa-language"></i> {{ 'Language' | translate }} <b class="caret"></b>
+                </a>
+                <div ngbDropdownMenu aria-labelledby="languageDropdown" class="dropdown-menu dropdown-menu-end">
+                    <a ngbDropdownItem (click)="changeLang('en')" href="javascript:void(0)">
+                        {{ 'English' | translate }}
+                    </a>
+                    <a ngbDropdownItem (click)="changeLang('fr')" href="javascript:void(0)">
+                        {{ 'French' | translate }}
+                    </a>
+                    <a ngbDropdownItem (click)="changeLang('ur')" href="javascript:void(0)">
+                        {{ 'Urdu' | translate }}
+                    </a>
+                    <a ngbDropdownItem (click)="changeLang('es')" href="javascript:void(0)">
+                        {{ 'Spanish' | translate }}
+                    </a>
+                    <a ngbDropdownItem (click)="changeLang('it')" href="javascript:void(0)">
+                        {{ 'Italian' | translate }}
+                    </a>
+                    <a ngbDropdownItem (click)="changeLang('fa')" href="javascript:void(0)">
+                        {{ 'Farsi' | translate }}
+                    </a>
+                    <a ngbDropdownItem (click)="changeLang('de')" href="javascript:void(0)">
+                        {{ 'German' | translate }}
+                    </a>
+                    <a ngbDropdownItem (click)="changeLang('zh-CHS')" href="javascript:void(0)">
+                        {{ 'Simplified Chinese' | translate }}
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+                <a class="nav-link" tabindex="0" ngbDropdownToggle id="myAccountDropdown" role="button">
+                    <i class="fa fa-user"></i> {{currentUser}} <b class="caret"></b>
+                </a>
+                <div ngbDropdownMenu aria-labelledby="myAccountDropdown" class="dropdown-menu">
+                    <a ngbDropdownItem href="javascript:void(0)">
+                        <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}
+                    </a>
+                    <a ngbDropdownItem href="javascript:void(0)">
+                        <i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}
+                    </a>
+                    <a ngbDropdownItem href="javascript:void(0)">
+                        <i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}
+                    </a>
+                    <a (click)="onLoggedout()" [routerLink]="['/login']" ngbDropdownItem>
+                        <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+  </div>
+</nav>

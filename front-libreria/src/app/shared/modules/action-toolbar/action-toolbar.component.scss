@@ -1,0 +1,50 @@
+@import '../../../../styles/utils';
+
+:host ::ng-deep .header-info-bubble {
+    border-radius: 10px;
+    background-color: #a6a8a9;
+    font-size: 13px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+    padding: 0.2em 1.5em;
+    margin-left: 3px;
+    text-transform: uppercase;
+}
+
+.toolbar-container {
+    .detail-tool-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 1vh;
+        border-bottom: 1px solid lightslategrey;
+        padding: 12px;
+        box-shadow: 0px 15px 10px -15px #111;
+        background-color: #fff;
+
+        .title-container {
+            color: #59595b;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+
+            h5 {
+                margin: 0;
+            }
+        }
+
+        .back-arrow {
+            cursor: pointer;
+        }
+
+        .fa-arrow-left {
+            color: $primary-color;
+            padding-right: 20px;
+        }
+    }
+}

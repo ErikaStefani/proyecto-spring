@@ -1,0 +1,42 @@
+@import 'utils';
+
+$topnav-background-color: $primary-color;
+:host {
+    .navbar {
+        background-color: $topnav-background-color;
+
+        .navbar-brand {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .nav-item > a {
+            color: #999;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    .messages {
+        width: 200px;
+
+        .msg-header{
+          font-size: 15px;
+          font-weight: 600;
+          padding-top: 5px;
+          padding-left: 10px;
+        }
+
+        .media {
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 5px;
+            font-size: 14px;
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}

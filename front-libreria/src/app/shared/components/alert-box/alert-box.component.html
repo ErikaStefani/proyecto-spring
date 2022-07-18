@@ -1,0 +1,20 @@
+<div
+  (clickOutside)="clickOut()"
+  [@slideInOutAnimation]="visible"
+  class="alert-container"
+  [ngClass]="this.className"
+  [ngStyle]="{
+    display: getDisplay(),
+    opacity: '1',
+    transition: 'opacity 0.6s'
+  }"
+>
+<div class="close-alert" (click)="closeMessage()">    
+  <i class="fa fa-times-circle" ></i>
+</div>
+
+  <div class="alert-message">
+    <div class="title font-regular">{{ title }}</div>
+    <div class="message font-regular">{{ notifyMessage }}</div>
+  </div>
+</div>

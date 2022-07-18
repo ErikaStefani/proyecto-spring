@@ -1,0 +1,17 @@
+<div class="card-container">
+
+  <h5 (click)="collapsed = !collapsed" class="collapsible-title-container" [attr.aria-expanded]="!collapsed"
+    aria-controls="collapsible-content">
+    <span class="collapsible-title clk-card-title">
+      {{title | translate}}
+    </span>
+    <!-- <i class="collapsible-icon material-icons">{{collapsed ? 'expand_more' : 'expand_less'}}</i> -->
+
+    <i class="collapsible-icon fa" [ngClass]="{'fa-chevron-up' : collapsed, 'fa-chevron-down' : !collapsed }"
+      aria-hidden="true"></i>
+  </h5>
+
+  <div id="collapsible-content" [ngbCollapse]="collapsed">
+    <ng-content></ng-content>
+  </div>
+</div>

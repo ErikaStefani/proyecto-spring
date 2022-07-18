@@ -1,0 +1,18 @@
+.collapsible-title-container{
+  position: relative;
+}
+
+.collapsible-title{
+    cursor: pointer;
+    color: #59595b;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+.collapsible-icon{
+  cursor: pointer;
+  vertical-align : middle;
+  position: absolute;
+  right:0;
+}
